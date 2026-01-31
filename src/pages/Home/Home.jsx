@@ -1,7 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar';
 import Banner from '../../components/Banner/Banner';
 import MovieRow from '../../components/MovieRow/MovieRow';
-import Footer from '../../components/Footer/Footer';
 import requests from '../../services/requests';
 import './Home.css';
 
@@ -54,8 +53,6 @@ const Home = () => {
           fetchUrl={requests.fetchNowPlaying}
         />
       </div>
-
-      <Footer />
     </div>
   );
 };

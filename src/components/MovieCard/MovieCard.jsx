@@ -1,18 +1,12 @@
 import { useState } from 'react';
-import { FaPlay, FaPlus, FaThumbsUp, FaChevronDown, FaCheck } from 'react-icons/fa';
+import { FaPlay, FaPlus, FaThumbsUp, FaChevronDown } from 'react-icons/fa';
 import { getImageUrl, imageSizes } from '../../services/api';
 import { truncateText } from '../../utils/truncateText';
-import { useFavorites } from '../../hooks/useWatchlist';
-import MovieModal from '../MovieModal/MovieModal';
-import { useLanguage } from '../../hooks/useLanguage';
 import './MovieCard.css';
 
 const MovieCard = ({ movie, isLarge }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
   const [showFeedback, setShowFeedback] = useState('');
-  const { t } = useLanguage();
 
   const baseImageUrl = movie.backdrop_path || movie.poster_path;
   const imageUrl = getImageUrl(
@@ -21,20 +15,13 @@ const MovieCard = ({ movie, isLarge }) => {
   );
 
   const fallbackImage = 'https://via.placeholder.com/342x513?text=No+Image';
-  const isFav = isFavorite(movie.id);
 
   const handleImageError = (e) => {
     e.target.src = fallbackImage;
   };
 
   const handleAddToFavorites = () => {
-    if (isFav) {
-      removeFavorite(movie.id);
-      setShowFeedback(t('removedFromList') || 'Removed from favorites');
-    } else {
-      addFavorite(movie);
-      setShowFeedback(t('addedToList') || 'Added to favorites');
-    }
+    setShowFeedback('Added to favorites');
     setTimeout(() => setShowFeedback(''), 2000);
   };
 
@@ -56,20 +43,20 @@ const MovieCard = ({ movie, isLarge }) => {
         <div className="movie-card-hover">
           <div className="movie-card-hover-content">
             <div className="movie-card-hover-actions">
-              <button className="movie-card-action-button" title={t('play') || 'Play'} onClick={() => setShowModal(true)}>
+              <button className="movie-card-action-button" title="Play">
                 <FaPlay className="movie-card-action-icon" />
               </button>
               <button 
-                className={`movie-card-action-button ${isFav ? 'active' : ''}`}
+                className="movie-card-action-button"
                 onClick={handleAddToFavorites}
-                title={isFav ? 'Remove from favorites' : t('addToList') || 'Add to favorites'}
+                title="Add to favorites"
               >
-                {isFav ? <FaCheck className="movie-card-action-icon" /> : <FaPlus className="movie-card-action-icon" />}
+                <FaPlus className="movie-card-action-icon" />
               </button>
-              <button className="movie-card-action-button" title={t('like') || 'Like'}>
+              <button className="movie-card-action-button" title="Like">
                 <FaThumbsUp className="movie-card-action-icon" />
               </button>
-              <button className="movie-card-action-button" title={t('moreInfo') || 'More info'} onClick={() => setShowModal(true)}>
+              <button className="movie-card-action-button" title="More info">
                 <FaChevronDown className="movie-card-action-icon" />
               </button>
             </div>
@@ -90,17 +77,11 @@ const MovieCard = ({ movie, isLarge }) => {
               <p className="movie-card-hover-description">
                 {truncateText(movie.overview, 150)}
               </p>
-              <div className="movie-card-genres">
-                <span className="movie-card-genre">Action</span>
-                <span className="movie-card-genre">Adventure</span>
-              </div>
             </div>
           </div>
           {showFeedback && <div className="movie-card-feedback">{showFeedback}</div>}
         </div>
       )}
-
-      <MovieModal movie={movie} isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 };
