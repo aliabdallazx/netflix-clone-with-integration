@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Navbar from '../../components/Navbar/Navbar';
 import Banner from '../../components/Banner/Banner';
 import MovieRow from '../../components/MovieRow/MovieRow';
@@ -5,6 +6,8 @@ import requests from '../../services/requests';
 import './Home.css';
 
 const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="home">
       <Navbar />
@@ -12,44 +15,44 @@ const Home = () => {
       
       <div className="home-content">
         <MovieRow 
-          title="NETFLIX ORIGINALS" 
+          title={t('navigation.netflixOriginals') || 'NETFLIX ORIGINALS'}
           fetchUrl={requests.fetchNetflixOriginals}
           isLarge={true}
         />
         <MovieRow 
-          title="Trending Now" 
+          title={t('navigation.trendingNow') || 'Trending Now'}
           fetchUrl={requests.fetchTrending}
         />
         <MovieRow 
-          title="Top Rated" 
+          title={t('navigation.topRated') || 'Top Rated'}
           fetchUrl={requests.fetchTopRated}
         />
         <MovieRow 
-          title="Action Movies" 
+          title={t('navigation.actionMovies') || 'Action Movies'}
           fetchUrl={requests.fetchActionMovies}
         />
         <MovieRow 
-          title="Comedy Movies" 
+          title={t('navigation.comedyMovies') || 'Comedy Movies'}
           fetchUrl={requests.fetchComedyMovies}
         />
         <MovieRow 
-          title="Horror Movies" 
+          title={t('navigation.horrorMovies') || 'Horror Movies'}
           fetchUrl={requests.fetchHorrorMovies}
         />
         <MovieRow 
-          title="Romance Movies" 
+          title={t('navigation.romanceMovies') || 'Romance Movies'}
           fetchUrl={requests.fetchRomanceMovies}
         />
         <MovieRow 
-          title="Documentaries" 
+          title={t('navigation.documentaries') || 'Documentaries'}
           fetchUrl={requests.fetchDocumentaries}
         />
         <MovieRow 
-          title="Upcoming Movies" 
+          title={t('navigation.upcomingMovies') || 'Upcoming Movies'}
           fetchUrl={requests.fetchUpcoming}
         />
         <MovieRow 
-          title="Now Playing" 
+          title={t('navigation.nowPlaying') || 'Now Playing'}
           fetchUrl={requests.fetchNowPlaying}
         />
       </div>

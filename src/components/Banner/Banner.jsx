@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaPlay, FaInfoCircle } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import api from '../../services/api';
 import requests from '../../services/requests';
 import { getImageUrl, imageSizes } from '../../services/api';
@@ -9,6 +10,7 @@ import './Banner.css';
 const Banner = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchFeaturedMovie = async () => {
@@ -60,11 +62,11 @@ const Banner = () => {
         <div className="banner-buttons">
           <button className="banner-button banner-button-play">
             <FaPlay className="banner-button-icon" />
-            Play
+            {t('banner.play')}
           </button>
           <button className="banner-button banner-button-info">
             <FaInfoCircle className="banner-button-icon" />
-            More Info
+            {t('banner.moreInfo')}
           </button>
         </div>
         <p className="banner-description">

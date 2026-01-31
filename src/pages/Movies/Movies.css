@@ -1,0 +1,105 @@
+.movies-page {
+  background: linear-gradient(135deg, #141414 0%, #0f0f0f 100%);
+  color: #e5e5e5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies-container {
+  flex: 1;
+  padding: 100px 20px 40px;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.movies-header {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.movies-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: white;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.movies-header p {
+  color: #b3b3b3;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.movies-content {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .movies-container {
+    padding: 80px 15px 30px;
+  }
+
+  .movies-header {
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+
+  .movies-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .movies-header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-container {
+    padding: 70px 12px 25px;
+  }
+
+  .movies-header {
+    margin-bottom: 30px;
+    padding: 0 12px;
+  }
+
+  .movies-header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .movies-header p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-container {
+    padding: 60px 10px 20px;
+  }
+
+  .movies-header {
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  .movies-header h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+  }
+
+  .movies-header p {
+    font-size: 0.85rem;
+  }

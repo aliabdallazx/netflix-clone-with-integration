@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import MovieCard from '../MovieCard/MovieCard';
 import Loader from '../Loader/Loader';
 import { useFetchMovies } from '../../hooks/useFetchMovies';
@@ -7,6 +8,7 @@ import './MovieRow.css';
 
 const MovieRow = ({ title, fetchUrl, isLarge = false }) => {
   const { data: movies, loading, error } = useFetchMovies(fetchUrl);
+  const { t } = useTranslation();
   const rowRef = useRef(null);
 
   const scroll = (direction) => {
@@ -28,7 +30,7 @@ const MovieRow = ({ title, fetchUrl, isLarge = false }) => {
       <div className="movie-row">
         <h2 className="movie-row-title">{title}</h2>
         <div className="movie-row-error">
-          <p>Error loading movies. Please try again later.</p>
+          <p>{t('common.error')}</p>
         </div>
       </div>
     );
@@ -42,7 +44,7 @@ const MovieRow = ({ title, fetchUrl, isLarge = false }) => {
         <button 
           className="movie-row-button movie-row-button-left"
           onClick={() => scroll('left')}
-          aria-label="Scroll left"
+          aria-label={t('common.previous')}
         >
           <FaChevronLeft className="movie-row-button-icon" />
         </button>
@@ -66,7 +68,7 @@ const MovieRow = ({ title, fetchUrl, isLarge = false }) => {
         <button 
           className="movie-row-button movie-row-button-right"
           onClick={() => scroll('right')}
-          aria-label="Scroll right"
+          aria-label={t('common.next')}
         >
           <FaChevronRight className="movie-row-button-icon" />
         </button>

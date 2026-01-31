@@ -8,6 +8,12 @@ export const useFetchMovies = (url) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!url) {
+        setData([]);
+        setLoading(false);
+        setError(null);
+        return;
+      }
       try {
         setLoading(true);
         const response = await api.get(url);

@@ -1,0 +1,26 @@
+.search-results-page {
+  background-color: #141414;
+  color: #e5e5e5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results-container {
+  flex: 1;
+  padding: 80px 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search-results-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.search-results-container p {
+  color: #b3b3b3;
+  font-size: 1.1rem;
+}
