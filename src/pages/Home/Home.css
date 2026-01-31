@@ -1,0 +1,16 @@
+.home {
+  min-height: 100vh;
+}
+
+.home-content {
+  margin-top: -10rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-content {
+    margin-top: -5rem;
+  }
+}
